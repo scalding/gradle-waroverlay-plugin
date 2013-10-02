@@ -37,12 +37,14 @@ artifacts {
     archives sourcesJar
 }
 
+createReleaseTag.dependsOn uploadArchives
+
 uploadArchives {
     repositories {
         mavenDeployer {
             configuration = configurations.deployerJar
             repository(url: "git:releases://git@bitbucket.org:scalding/maven-repo.git") {
-                authentication(userName: bintrayUsername, password: bintrayAPIKey)
+                authentication(userName: githubUsername, password: githubUsername)
             }
             snapshotRepository(url: "git:snapshots://git@bitbucket.org:scalding/maven-repo.git") {
                 authentication(userName: githubUsername, password: githubPassword)
