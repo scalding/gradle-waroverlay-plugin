@@ -1,5 +1,6 @@
 apply plugin: "groovy"
 apply plugin: "maven"
+apply plugin: "signing"
 
 apply from: 'http://tellurianring.com/projects/gradle-plugins/gradle-release/apply.groovy'
 
@@ -37,11 +38,16 @@ artifacts {
     archives sourcesJar
 }
 
+signing {
+    sign configurations.archives
+}
+
 createReleaseTag.dependsOn uploadArchives
 
 uploadArchives {
     repositories {
         mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment)}
             configuration = configurations.deployerJar
             repository(url: "git:releases://git@bitbucket.org:scalding/maven-repo.git") {
                 authentication(userName: githubUsername, password: githubUsername)
