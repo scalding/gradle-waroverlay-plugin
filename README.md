@@ -22,8 +22,11 @@ dependencies {
 ```
 
 Most other configuration is handled like the regular [Gradle WAR plugin](http://www.gradle.org/docs/current/userguide/war_plugin.html). There is one added convention:
+
 ```groovy
 warOverlay {
     includeWarJars false // whether to include the jar files in the WAR. Default is false. If false, it might be useful to set transitive to `true` for the WAR dependency so its dependencies will be calculated and added
 }
 ```
+
+For a sample, see https://github.com/Unicon/unicon-cas-overlay/blob/CAS4/build.gradle
