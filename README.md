@@ -8,6 +8,19 @@ developed to support building CAS servers, but should work in other situations. 
 Import the plugin:
 
 ```groovy
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.scaldingspoon.gradle:gradle-waroverlay-plugin:0.9.3"
+    }
+}
+```
+
+Alternatively, import the plugin in one line:
+
+```groovy
 apply from: "http://dl.bintray.com/scalding/generic/waroverlay.gradle"
 ```
 
