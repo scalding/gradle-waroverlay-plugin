@@ -43,3 +43,14 @@ warOverlay {
 ```
 
 For a sample, see https://github.com/Unicon/unicon-cas-overlay/blob/CAS4/build.gradle
+
+# Troubleshooting
+
+If you include any signed JARs in your WAR, you'll likely encounter signature verification errors at runtime.  To get around this, exclude the signature files from inclusion in your WAR like this:
+
+```groovy
+war {
+    // ... whatever else you may need
+    exclude "META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA"
+}
+```
