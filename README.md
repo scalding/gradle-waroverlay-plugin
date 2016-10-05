@@ -16,6 +16,7 @@ buildscript {
         classpath "org.scaldingspoon.gradle:gradle-waroverlay-plugin:0.9.3"
     }
 }
+apply plugin: 'waroverlay'
 ```
 
 Alternatively, import the plugin in one line:
